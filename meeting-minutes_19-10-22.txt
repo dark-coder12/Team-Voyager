@@ -1,0 +1,12 @@
+-> Physical meeting held from 5:30 pm to 6:30 pm at FAST-NUCES
+
+-> Topics included:
+
+   All 3 members went through the Assignment together
+   Test Cases were compared as to which one's should be included for this phase
+   GitHub setup was made and the repistory was cloned on each member's laptop
+   Languages were compared for automation and prioritized languages are:
+   		Python
+		Javascript
+   An online meeting is scheduled to be at sharp 10:30pm for further division.
+
