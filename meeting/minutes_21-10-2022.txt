@@ -1,0 +1,6 @@
+-> Got Done with the initial set up of following:
+	nightwatch js
+	chromedriver
+	
+-> Wrote the first test case for testing purpose of correct output
+-> Wrote and run the test for the opening a public repository of gitlab
