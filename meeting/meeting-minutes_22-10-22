@@ -1,0 +1,18 @@
+Daily Meeting Report:
+
+Venue: FAST NUCES 
+Time: 3:30 to 4:00 pm
+
+Agenda:
+Trying out various ways to solve GitLab's Captcha issue.
+Upon some barriers from GitLab, we explored GitHub and saw if it holds all similar test cases for which we've made test scenarios.
+GitHub had many similar functionalities with just a little varied UI design or exact step process.
+e.g Gist instead of Snippet.
+
+Work division (completed at home):
+Bisma wrote the login test case for GitHub.
+Izzah wrote the gist creation test case (basic for now) to see if GitHub's security does not cause any issue.
+
+Both test cases are working successfully (there was no restriction from GitHub) and have been committed to a new folder in this repository.
+
+Prior work (21st): Setup by Shehryar and original test case writing of Merging Request for GitLab.
