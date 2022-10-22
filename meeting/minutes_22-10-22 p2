@@ -1,0 +1,13 @@
+Minutes of the meeting :
+
+After exploring GitHub features and comparing its functionalities to GitLab we have finalised our test cases accordingly.
+
+Izzah Mujeeb - Snippets which is known as Gist in GitHub
+Shehryar Munir - Merge Request
+Bisma Ashar - Collaboration/Project Handling
+
+Moreover, I,Bisma, worked on the automated script for LogIn on GitHub and Izza worked on the automated script for single and multiple files Gist on GitHub.
+She has committed them on GitHub alternative testing folder.
+
+We all are currently working on unit testing for our particular test cases with the aim to complete it in 2 3 days.
+After that we will start with the next phase that includes API testing.
