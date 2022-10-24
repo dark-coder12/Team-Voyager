@@ -1,0 +1,15 @@
+Reviewed the progress and set goals and schedule
+
+Resolved Node.js issue on my laptop due to which the scripts were not running
+It is working perfectly fine now
+
+Unit testing : reviewed eachothers scripts
+
+API testing : searched API testing and tried on one testcase
+
+Discussed environmental variables and security concerns and will edit our code
+First commit regarding environmental variables is already done
+
+Git Ignore was created for this repository and env file has been added in that
+
+We discussed to align it to the Project Object Model
