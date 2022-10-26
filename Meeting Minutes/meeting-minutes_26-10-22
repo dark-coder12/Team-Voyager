@@ -1,0 +1,10 @@
+Having done simple Nightwatch Testing of our respective unit tests, we covered the following aspects today i.e 26th October's meeting)
+
+  -> Going through the setup and documentation of Cucumber 
+  -> Trying to understand the dynamics of Gherkin Language and automated Testing
+  -> Incoperating env variables in all test cases
+  -> Exploring the Page Object Model (we will be adding that in all our test cases and making the final commits soon).
+  
+  
+ API Testing was further explored through GitHub's official website and while Shehryar and Bisma are working on Cucumber Setup, Izza is currently setting a base for
+ all API Testing.
