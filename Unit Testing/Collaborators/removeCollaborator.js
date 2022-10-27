@@ -19,7 +19,7 @@ module.exports = {
         .waitForElementVisible("xpath" , "http://html/body/div[5]/div/main/turbo-frame/div/div/div/div[1]/div/ul/li[3]/nav-list/ul/li[2]/ul/li[1]/a/span[2]")
         .click("xpath" , "http://html/body/div[5]/div/main/turbo-frame/div/div/div/div[1]/div/ul/li[3]/nav-list/ul/li[2]/ul/li[1]/a/span[2]")
         .waitForElementVisible("#sudo > div.auth-form-header.p-0 > h1")
-        .setValue("#sudo_password", "Home_665")
+        .setValue("#sudo_password", process.env.password_)
         .click('#sudo > sudo-credential-options > div:nth-child(4) > form > div > div > button')
         .waitForElementVisible("#add-user-access-dialog > summary")
         .click("#repository-access-table > div.Box.rounded-0.rounded-bottom-2.border-top-0 > div > div:nth-child(1) > div.d-flex.flex-column.flex-grow-0 > details > summary")

@@ -6,8 +6,8 @@
 //             .windowMaximize()
 //             .waitForElementVisible('a[class="HeaderMenu-link HeaderMenu-link--sign-in flex-shrink-0 no-underline d-block d-lg-inline-block border border-lg-0 rounded rounded-lg-0 p-2 p-lg-0"]')
 //             .click('a[class="HeaderMenu-link HeaderMenu-link--sign-in flex-shrink-0 no-underline d-block d-lg-inline-block border border-lg-0 rounded rounded-lg-0 p-2 p-lg-0"]')
-//             .setValue('input[id="login_field"]', 'l201302@lhr.nu.edu.pk') //   input email
-//             .setValue('input[id="password"]', 'highschoolprince')        // input password
+//             .setValue('input[id="login_field"]', process.env.userName_) //   input email
+//             .setValue('input[id="password"]', process.env.password_)        // input password
 //             .click('input[value="Sign in"]')   
 
 //             .url('https://github.com/shehryarmunir/Testing-Pull-Requests')

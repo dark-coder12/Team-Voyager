@@ -1,12 +1,12 @@
 
 
 exports.config = {
-  tests: 'Repository_test.js',
+  tests: ['Tests/getRepository.js'],
   helpers: {
     REST: {
       prettyPrintJson: true, 
       endpoint: '',
-      Authorization: 'Bearer ___'
+      Authorization: 'Bearer ${process.env.key}'
 
     },
     JSONResponse: {}
