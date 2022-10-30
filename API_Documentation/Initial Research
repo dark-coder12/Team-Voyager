@@ -1,0 +1,21 @@
+From our understanding:
+
+APIs - Application Program Interfaces. Programmers use such technology to actually interact with systems outside of their code. 
+The purpose of this is mainly to obtain or modify externally existing information.
+e.g Weather Apps utilize Web APIs to fetch material.
+
+
+GitHub APIs - are thus used for user interaction with GitHub's platform. Features such as creating / updating repositories, branches, issues, pull requests,
+and projects are all examples of what can be interacted with simply using GitHub's public API. 
+
+Authorization Tokens:
+Incase a user aims to fetch or modify private information, an authenticated token must be generated (through developer settings) that provides a unique
+key for seamless development.
+
+Types of APIs GitHub uses:
+
+1) GraphQL: GraphQL was originally internally made for Facebook and solves a lot of REST's shortcomings. It is extremely fast as it provides the user with 
+exactly what they want. This means no over or underfetching of data and is achieved since GraphQL is a structured query language.
+
+
+2) REST: REST APIs on the other hand are not so structured, although much more mature. Users get all sorts of data and filtering as to be done on it.
