@@ -1,0 +1,19 @@
+{
+  "name": "gists",
+  "version": "1.0.0",
+  "main": "cucumber.conf.js",
+  "scripts": {
+    "test": "cucumber-js --require cucumber.conf.js --require step-definitions --format node_modules/cucumber-pretty"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "chromedriver": "^107.0.1",
+    "cucumber": "^6.0.7",
+    "cucumber-pretty": "^6.0.1",
+    "nightwatch": "^1.7.13",
+    "nightwatch-api": "^3.0.2"
+  }
+}
