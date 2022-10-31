@@ -1,46 +1,84 @@
-module.exports = {
+const { client } = require('nightwatch-api');
+const { Given, Then, When } = require('cucumber');
 
-    url: 'https://github.com/bismaashar/TestRepository/settings',
+require('dotenv').config(); 
+
+const pageObj = client.page.removeCollaborator();
+
+
+Given('I am Logged In', () => {
     
-     elements: {
-         login : {
+    const browser = client.page.login()
+    .navigate()
+    .setValue("@login", process.env.uName)
+    .setValue("@password", process.env.passcode)
+    .click("@loginBtn")
+    return browser;
+});
 
-             selector: "#login_field"
-         },
-         password : {
-             
-             selector: "#password"
-         },
-         loginBtn: {
-            selector : "#login > div.auth-form-body.mt-3 > form > div > input.btn.btn-primary.btn-block.js-sign-in-button"
-        },
-        collab: {
-            locateStrategy: "xpath",
-            selector: "/html/body/div[5]/div/main/turbo-frame/div/div/div/div[1]/div/ul/li[3]/nav-list/ul/li[2]/ul/li[1]/a/span[2]"
-        },
-        Btn2: {
-            selector: "#sudo > div.auth-form-header.p-0 > h1"
-        },
-        Btn3: {
-           selector: "#sudo_password"
-        },
-        Btn4: {
-            selector: "#sudo > sudo-credential-options > div:nth-child(4) > form > div > div > button"
-        },
-        Btn5: {
-            selector: "#add-user-access-dialog > summary"
-        },
-        Btn6: {
-            selector: "#repository-access-table > div.Box.rounded-0.rounded-bottom-2.border-top-0 > div > div:nth-child(1) > div.d-flex.flex-column.flex-grow-0 > details > summary"
-        },
-        Btn7: {
-            selector: "#repository-access-table > div.Box.rounded-0.rounded-bottom-2.border-top-0 > div > div:nth-child(1) > div.d-flex.flex-column.flex-grow-0 > details > details-dialog > form > div > button"
-        },
+When('I open GitHubs Setting Page', () => {
 
-        addPeople: {
-            locateStrategy: "xpath",
-            selector: "/html/body/div[5]/div/main/turbo-frame/div/div/div[2]/div/div/div[3]/div[2]/details/summary"
-        }
-     }
- }
+    return pageObj
+      .navigate()
+      .waitForElementVisible('@collab', 1000);
+});
+
+When('I click on Collaborators Section', () => {
+
+    return pageObj
+      .click('@collab');
+});
+
+When('I click on Add People Button', () => {
+
+    return pageObj
+      .click('@addPeople');
+});
+
+
+
+// Then('GitHub redirects me to Btn2', () => {
+
+//     return pageObj
+//       .pause(5000)
+//       .waitForElementVisible("@Btn8")
+//       .click("@Btn8")
+// });
+
+// When('I set value of Btn3', () => {
+
+//     return pageObj
+//       .waitForElementVisible("@Btn3")
+//       .setValue('@Btn3', process.env.passcode)
+// });
+
+// When('I click on Btn4', () => {
+
+//     return pageObj
+//       .waitForElementVisible("@Btn4")
+//       .click('@Btn4');
+// });
+
+// When('I wait for Btn5', () => {
+
+//     return pageObj
+//       .waitForElementVisible("@Btn5")
+// });
+
+// When('I click on Btn6', () => {
+
+//     return pageObj
+//       .waitForElementVisible("@Btn6")
+//       .click('@Btn6');
+// });
+
+
+// When('I click on Btn7', () => {
+
+//     return pageObj
+//       .waitForElementVisible("@Btn7")
+//       .click('@Btn7');
+// });
+
+
  
