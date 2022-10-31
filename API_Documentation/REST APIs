@@ -1,0 +1,27 @@
+GitHub has specialized in REST much more than GraphQL, perhaps due to the maturity of the architecture.
+
+REST, other wise known as Representational State Transfer, is one of the most widely used API's out there currently.
+
+Mechanism:
+Upon recognizing a need that must be fulfilled by an external software, a client sends a request through REST APIs, and this API creates an object of the data that is required by the client software. Upon successful connection with the particular website, the response is returned back to the client i.e what the client requested for. This response is returned through a secure connection via HTTP.
+
+This may be in the form of:
+
+JSON
+HTML
+XLT 
+Python 
+PHP
+Text
+
+Among these, JSON, also known as JavaScript Object Notation, is the most popular, mainly because of it's readable nature both both humans and computers. It closely resembles a class, struct type structure, with attributes and values. Regardless of the language used, JSON can be parsed quite conveniently.
+
+Components of REST:
+
+Request:
+
+A request contains the API address of the website to fetch information from, along with some headers and required / optional parameters. This is crucial to note, as some features can only be achieved after authentication of one's own account. For instance, you can not post something without having a valid account. Other information that can be passed may target cache, cookies and other settings.
+
+Response: 
+
+If the information that is requested is successfully fetched, an object with the desired values is returned, or else the object may be full of null / undefined values. 
