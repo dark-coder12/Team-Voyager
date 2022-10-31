@@ -1,0 +1,7 @@
+A short online meeting was held today to discuss the progress as well as future tasks of Phase 2.
+
+All Unit Testing was done and committed last week using simple NightWatch, but most of it has been integrated with Cucumber, and is being committed on the go.
+
+About 50 % of API Testing has also been done, once it is added, assertions and code optimization will be added.
+
+Documentation Branch was also created this week to cater Task 4 and Task 5. General Introduction on GitHub's most used APIs was committed and will be expanded upon.
