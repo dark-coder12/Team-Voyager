@@ -1,0 +1,16 @@
+GraphQL is not just an architecture, it is a complete query language. It gives a very understandable representation of the data accessed by the API of your choice, with the major difference from REST being that it allows it's users to fetch only what they desire. The results are always reliable and to the point. GraphQL can also be integrated with complex developer tools.
+
+While typical REST APIs require loading from multiple URLs, GraphQL gets all of the required data through a single URL, and thus offers greater speeds.
+
+
+As quoted by: "https://www.wallarm.com/what/what-is-graphql-definition-with-example"
+
+A powerful data-fetching API;
+API interface that’s easy to learn and work with;
+An open-source query language making APIs fast and flexible;
+An effective method to streamline security management for the API;
+A way to give experts the ability to develop APIs with desirable methods;
+A query language that gets along with a given integrated development environment easily and effectively;
+The facility to develop APIs that will function the way the client/end-user wanted or expected;
+An ideal alternative to REST.
+
