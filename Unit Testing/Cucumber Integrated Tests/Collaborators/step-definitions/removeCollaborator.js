@@ -16,69 +16,55 @@ Given('I am Logged In', () => {
     return browser;
 });
 
-When('I open GitHubs Setting Page', () => {
+When('I open my existing Organization', () => {
 
     return pageObj
       .navigate()
-      .waitForElementVisible('@collab', 1000);
+      .maximizeWindow()
+      .waitForElementVisible('@peopleOptionBtn', 1000);
 });
 
-When('I click on Collaborators Section', () => {
+When('I click on People Option', () => {
 
     return pageObj
-      .click('@collab');
+      .click('@peopleOptionBtn')
 });
 
-When('I click on Add People Button', () => {
+When('I click on Pending Invitations', () => {
+
+  return pageObj
+      .waitForElementVisible('@pendingInvitationBtn')
+      .click("@pendingInvitationBtn")
+      .pause(10000)
+});
+
+
+When('I select the invitation to be deleted', () => {
 
     return pageObj
-      .click('@addPeople');
+      .waitForElementVisible("@selectInvitationBtn")
+      .click('@selectInvitationBtn')
+      .pause(5000)
+});
+
+When('I click on Cancel Invitation', () => {
+
+    return pageObj
+      .waitForElementVisible("@cancelInvitationBtn")
+      .click('@cancelInvitationBtn')
+      .pause(5000)
+});
+
+When('I confirm {string}', (string) => {
+
+      return pageObj
+        .waitForElementVisible(string)
+        .click(string)
 });
 
 
+Then('GitHub redirects me to the Result', () => {
 
-// Then('GitHub redirects me to Btn2', () => {
-
-//     return pageObj
-//       .pause(5000)
-//       .waitForElementVisible("@Btn8")
-//       .click("@Btn8")
-// });
-
-// When('I set value of Btn3', () => {
-
-//     return pageObj
-//       .waitForElementVisible("@Btn3")
-//       .setValue('@Btn3', process.env.passcode)
-// });
-
-// When('I click on Btn4', () => {
-
-//     return pageObj
-//       .waitForElementVisible("@Btn4")
-//       .click('@Btn4');
-// });
-
-// When('I wait for Btn5', () => {
-
-//     return pageObj
-//       .waitForElementVisible("@Btn5")
-// });
-
-// When('I click on Btn6', () => {
-
-//     return pageObj
-//       .waitForElementVisible("@Btn6")
-//       .click('@Btn6');
-// });
-
-
-// When('I click on Btn7', () => {
-
-//     return pageObj
-//       .waitForElementVisible("@Btn7")
-//       .click('@Btn7');
-// });
-
-
- 
+    return pageObj
+      .pause(5000)
+});
