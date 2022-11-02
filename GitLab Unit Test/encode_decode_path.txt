@@ -1,0 +1,42 @@
+RSpec.describe Gitlab::Jira::Dvcs do
+  describe '.encode_slash' do
+    it 'replaces slash character' do
+      expect(described_class.encode_slash('a/b/c')).to eq('a@b@c')
+    end
+
+    it 'ignores path without slash' do
+      expect(described_class.encode_slash('foo')).to eq('foo')
+    end
+  end
+
+  describe '.decode_slash' do
+    it 'replaces slash character' do
+      expect(described_class.decode_slash('a@b@c')).to eq('a/b/c')
+    end
+
+    it 'ignores path without slash' do
+      expect(described_class.decode_slash('foo')).to eq('foo')
+    end
+  end
+end
+
+
+This piece of testing script is taken from the source: https://gitlab.com/gitlab-org/gitlab/-/blob/master/spec/lib/gitlab/jira/dvcs_spec.rb
+
+The mentioned test script is written in Ruby and below is the interpretation keeping in mind the testing and Ruby syntax.
+
+1-a) encode_path_with_slash: The first test case tests the function encode_slash, in a way that this function is
+passed a string path which includes the '/' character and after the successful execution of this function all
+'/' characters are replaced with the '@' sign. To check the correct output an assertion is place in the form of `.to eq('a@b@c')`
+to compare the expected result with the result retrieved.
+
+1-b) encode_path_without_slash: In this part of the test case, the encode_slash function is tested for such a
+path in which it does not include the '/' sign. So, for the proper functioning of this function it should not process
+the path without slashes, and similarly, the assertion is put in a way that the resultant i.e.,`.to eq('foo')` should be same as the passed parameter path.
+
+2-a) decode_path_with_slash: In this part the slashes are decoded, in other words the character which was replaced with
+'@' at the place of '/' will be again replaced with slash. We can also think about this in a way that these functions are used for the storing the paths in an encrypted manner.
+
+2-b) decode_path_without_slash: In this part, decode_slash function works in a way that if there exists a path without
+slashes then the function will not look for any slashes rather the retrieved result would be same as the input 
+parameter.
