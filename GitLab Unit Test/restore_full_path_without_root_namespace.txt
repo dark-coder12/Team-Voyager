@@ -1,0 +1,25 @@
+describe '.restore_full_path' do
+    context 'project name is an encoded full path' do
+      it 'returns decoded project path' do
+        expect(described_class.restore_full_path(namespace: 'group1', project: 'group1@group2@project1')).to eq('group1/group2/project1')
+      end
+    end
+
+    context 'project name is not an encoded full path' do
+      it 'assumes project belongs to root namespace and returns full project path based on passed in namespace' do
+        expect(described_class.restore_full_path(namespace: 'group1', project: 'project1')).to eq('group1/project1')
+      end
+    end
+end
+
+This piece of testing script is taken from the source: https://gitlab.com/gitlab-org/gitlab/-/blob/master/spec/lib/gitlab/jira/dvcs_spec.rb
+
+The mentioned test script is written in Ruby and below is the interpretation keeping in mind the testing and Ruby syntax.
+
+1) restore_full_path_with_root_namespace: The script tests restore_full_path function in a way that when a project path is feeded 
+encoded along with specification of it's root namespace then the result retrieves the decoded path of the project 
+where the characters in decoded path'@' are replaced with '/'.
+
+2) restore_full_path_without_root_namespace: The second context of script test the function restore_full_path in a
+way that the path given as a parameter is without the specification of root namespace in which the assertion is put
+on the expected result considering the assumption that the project belongs to root namespace.
