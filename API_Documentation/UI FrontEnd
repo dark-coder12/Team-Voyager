@@ -111,3 +111,31 @@ function initItem(el: HTMLElement) {
        A demonstration we tested is also attached as a file.
 
 The complete source code is found here: https://github.com/github/task-lists-element/blob/main/src/task-lists-element.ts
+
+
+Primer CSS
+GitHub has attached Primer’s name to it’s official profile on GitHub itself. Primer plays a huge role in the design components of this website. Primer basically provides CSS components in cooperating an Object Oriented Approach in its code.
+
+Install npm install --save @primer/css
+
+Import: SCSS (Sass) is used to aid CSS styles where needed. Various packages can be imported, depending on what functionality is needed.
+@import "@primer/css/index.scss";
+        @import "@primer/css/core/index.scss";
+@import "@primer/css/product/index.scss";
+@import "@primer/css/marketing/index.scss";
+        
+Core refers to common dependencies, products include any styles only specific to GitHub such as avatars, and marketing is specific to GitHub’s marketing features.
+
+A code reference for Avatars in SCSS. The display is made inline to allow text along with the avatar on the same line. The background color adds an opaque background incase the avatar is transparent. The whole avatar is aligned in the middle, and a little shadow towards bottom right is provided.
+
+.avatar {
+  display: inline-block;
+  overflow: hidden; // Ensure page layout in Firefox should images fail to load
+  line-height: $lh-condensed-ultra;
+  vertical-align: middle;
+  background-color: var(--color-avatar-bg); // adds opaque bg to transparent avatars
+  border-radius: $border-radius;
+  flex-shrink: 0;
+  // stylelint-disable-next-line primer/box-shadow
+  box-shadow: 0 0 0 1px var(--color-avatar-border);
+
