@@ -17,3 +17,43 @@ Current UI
 Web Components 
 
 Web Components is a vast term, and by this GitHub mainly refers to customized code they’ve established using simple HTML, CSS and JavaScript. These components offer portability as well as encapsulation.
+
+A real time example of Task List Elements (A component made by GitHub)
+
+Functionality of the frontend features - in JavaScript:
+
+The following source code is for initializing task element actions (i.e. dragging). GitHub has created open source code for utilizing task items functionality, much similar to a to-do list. This list also allows nesting and dragging rows. 
+       
+ By examining the initItem function
+
+First of all, the function checks if the task element is not already initialized, and if not, it initializes it. It also checks whether the current task item to be added is an instance object of the same web component or not, or else it returns from the function. In case a single item exists, since it is not draggable, it returns as well. If all conditions are satisfied mouse movement actions are applied on events like mouse over or mouse out.
+
+// Only top-level lists are draggable, and nested lists drag with their parent item.
+function initItem(el: HTMLElement) {
+  if (initialized.get(el)) return
+  initialized.set(el, true)
+
+  const currentTaskList = el.closest('task-lists')
+  if (!(currentTaskList instanceof TaskListsElement)) return
+
+  // Single item task lists are not draggable.
+  if (currentTaskList.querySelectorAll('.task-list-item').length <= 1) return
+
+  const fragment = handleTemplate.content.cloneNode(true)
+  const handle = (fragment as DocumentFragment).querySelector<HTMLElement>('.handle')
+  el.prepend(fragment)
+
+  if (!handle) throw new Error('handle not found')
+  handle.addEventListener('mouseenter', onHandleMouseOver)
+  handle.addEventListener('mouseleave', onHandleMouseOut)
+
+  sortable(el, onSortStart, onSorted)
+
+  // Drag operations don't remove :hover styles, so manage drag handle hover state.
+  el.addEventListener('mouseenter', onListItemMouseOver)
+  el.addEventListener('mouseleave', onListItemMouseOut)
+}
+
+       A demonstration we tested is also attached as a file.
+
+The complete source code is found here: https://github.com/github/task-lists-element/blob/main/src/task-lists-element.ts
