@@ -1,0 +1,42 @@
+GitHub’s APIs
+
+Why GitHub uses two different APIs
+
+GitHub makes use of both REST and GraphQL APIs, and the main reason behind this is that some features are supported in one API while some in the other one. Users are not restricted to choose only one of these, and depending on their expertise , need, and comfort level, they may either choose the former or the latter. 
+GitHub does not explicitly prefer one over the other. 
+“You don't need to exclusively use one API over the other” -  
+https://docs.github.com/en/developers/overview/about-githubs-apis#choosing-the-graphql-api
+
+
+What tools to use for interaction with the API
+
+GitHub’s documentation currently provides documentation for the following tools. With these, users can easily carry out API commands.
+
+•	GitHub CLI
+•	Curl
+•	Octokit Library
+
+Users may use third party libraries as well. 
+
+What GitHub says about REST / GraphQL APIs
+
+As mentioned in our initial research commits i.e. Files in the API_Documentation Folder, GitHub clearly differentiates the mode of responses for both. 
+GraphQL gives you the advantage to only receive the data which you ask for, and a the “pre-known structure”. On the other hand, REST API returns all data related to your request, even if you did not ask for it, and this is done as a “pre-determined structure”. 
+Another possibility is that a single GraphQL request can provide data equivalent to multiple REST APIs, mainly due to its flexibility. This is made clear with an example.
+Suppose you wish to get the login of 10 followers of each of your first 10 followers. You can make a single GraphQL request to achieve this:
+
+{
+  viewer {
+    followers(first: 10) {
+      nodes {
+        login
+        followers(first: 10) {
+          nodes {
+            login
+          }
+        }
+      }
+    }
+  }
+}
+
