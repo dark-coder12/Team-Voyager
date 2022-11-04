@@ -1,0 +1,97 @@
+GitHub and GraphQL
+
+GitHub first announced the shift towards GraphQL back in 2016, as mentioned in their announcement post. 
+https://github.blog/2016-09-14-the-github-graphql-api/
+
+“GitHub chose GraphQL because it offers significantly more flexibility for our integrators. The ability to define precisely the data you want—and only the data you want—is a powerful advantage over traditional REST API endpoints. GraphQL lets you replace multiple REST requests with a single call to fetch the data you specify.”
+
+This section of the documentation research focuses on how to set up GraphQL Integration and be able to make requests for GitHub’s features.
+
+
+2. Root Endpoint
+
+To access GitHub’s API, the following exact endpoint has to be used: https://api.github.com/graphql
+
+3. Tools
+
+GitHub recommends using GraphQL explorer to make GraphQL calls. GraphQL requests are always made using JSON bodies, so if you’re using HTTP instead of explorer, the HTTP verb always remains POST. The differentiation amongst requests is made by either using queries or mutations.
+
+
+4. Parts of GraphQL
+
+Query: Queries are similar to GET Requests, that are just used to fetch data from the API rather than mutate it. To specify a query, fields till the last level of nesting must be specified to get only the request data.
+query {
+  JSON-OBJECT-TO-RETURN
+}
+
+
+Mutation: Mutations involve changing data, and thus perform actions similar to POST / PATCH and DELETE. This involves mutation of already existing data.
+Mutation name, input object, and payload object are required to formulate a mutation.
+mutation {
+  MUTATION-NAME(input: {MUTATION-NAME-INPUT!}) {
+    MUTATION-NAME-PAYLOAD
+  }
+}
+
+
+Query Scenario
+
+Find 20 recently closed issues, and list their title, URL and first five labels.
+
+query {
+  repository(owner:"octocat", name:"Hello-World") {
+    issues(last:20, states:CLOSED) {
+      edges {
+        node {
+          title
+          url
+          labels(first:5) {
+            edges {
+              node {
+                name
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+Mutation Scenario
+
+The following scenario will first fetch the issue ID of “Hello World” Repository and add an emoji reaction to the issue.
+query FindIssueID {
+  repository(owner:"octocat", name:"Hello-World") {
+    issue(number:349) {
+      id
+    }
+  }
+}
+
+mutation AddReactionToIssue {
+  addReaction(input:{subjectId:"MDU6SXNzdWUyMzEzOTE1NTE=",content:HOORAY}) {
+    reaction {
+      content
+    }
+    subject {
+      id
+    }
+  }
+}
+
+The response for this mutation is as follows: 
+
+{
+  "data": {
+    "addReaction": {
+      "reaction": {
+        "content": "HOORAY"
+      },
+      "subject": {
+        "id": "MDU6SXNzdWUyMTc5NTQ0OTc="
+      }
+    }
+  }
+}
+
