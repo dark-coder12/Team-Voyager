@@ -1,0 +1,23 @@
+
+We had a meeting to divide documentation as follows:
+
+Background / Tools / GitHub's stance on both APIs: Bisma
+
+GraphQL:
+Authentication Bisma
+Root Endpoint Izza
+Tools Izza
+Parts of GraphQL (Mutation / Queries) Izza
+Schema Retrospection Shehryar
+Resource Limitations Shehryar
+
+REST:
+REST Request Izza
+Authentication Shehryar
+Env Variables Sheryar
+Headers Bisma
+Path and Path Parameters Izza
+Query Parameters Bisma
+Body Parameters Izza
+Response Body Shehryar
+REST API Scenario Bisma
