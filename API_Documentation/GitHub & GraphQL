@@ -7,6 +7,20 @@ https://github.blog/2016-09-14-the-github-graphql-api/
 
 This section of the documentation research focuses on how to set up GraphQL Integration and be able to make requests for GitHub’s features.
 
+1.  Authentication
+
+To perform operations using APIs that only a logged in user can do, you need to get a personal access token (classic). This can be done by accessing developer settings from your GitHub profile and generating a token from there.
+The following scopes are usually needed to perform basic functions
+•	repo
+•	read:packages
+•	read:org
+•	read:public_key
+•	read:repo_hook
+•	user
+•	read:discussion
+•	read:enterprise
+•	read:gpg_key
+
 
 2. Root Endpoint
 
@@ -96,6 +110,7 @@ The response for this mutation is as follows:
 }
 
 5. Schema Retrospection
+
 To further aid users, GitHub suggests querying a GraphQL schema to get more information about it. For instance, get details about the schema or any type of feature, using __schema or __type. The parameters are returned.
 query {
   __schema {
@@ -125,6 +140,7 @@ $ curl -H "Authorization: bearer TOKEN" https://api.github.com/graphql
 Note:  "message": "Bad credentials" or 401 Unauthorized is usually returned when your token is not valid.
 
 6. Resource Limitations
+
 A brilliant yet overlooked feature that GitHub’s GraphQL supports is resource limitation. To avoid queries / mutations that exploit server resources, there are three standards that have been put forth, which must be met by all users.
 1.	Provide a first or last argument for any API request.
 2.	The first or last argument must be within 1 – 100.
