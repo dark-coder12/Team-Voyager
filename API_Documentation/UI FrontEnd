@@ -18,7 +18,9 @@ Web Components
 
 Web Components is a vast term, and by this GitHub mainly refers to customized code they’ve established using simple HTML, CSS and JavaScript. These components offer portability as well as encapsulation.
 
-Important Source Code Snippets & Explanations
+A real time example of Task List Elements (A component made by GitHub)
+
+Functionality of the frontend features - in JavaScript:
 
 The following source code is for initializing task element actions (i.e. dragging). GitHub has created open source code for utilizing task items functionality, much similar to a to-do list. This list also allows nesting and dragging rows. 
        
