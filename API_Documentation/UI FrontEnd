@@ -1,0 +1,19 @@
+GitHub’s User Interface Design
+
+GitHub does not use heavy frameworks for it’s front-end such as Angular or Vue, instead it makes use of Vanilla HTML, CSS and JavaScript, or personalized Components. 
+
+Background
+
+Upon extensive research, it was found that GitHub originally (2007) made use of simple JavaScript using jQuery for its frontend, but with time it reverted back to the simplicity of vanilla JS. According to GitHub’s official blog: 
+
+“As part of our refined approach to building frontend features on GitHub.com, we focused on getting away with regular HTML foundation as much as we could, and only adding JavaScript behaviors as progressive enhancement. As a result, even those web forms and other UI elements that were enhanced using JS would usually also work with JavaScript disabled in the browser. In some cases, we were able to delete certain legacy behaviors altogether instead of having to rewrite them in vanilla JS.”
+
+https://github.blog/2018-09-06-removing-jquery-from-github-frontend/
+
+GitHub states in their blog that they strive to keep their frontend lightweight, fast and accessible.
+
+Current UI
+
+Web Components 
+
+Web Components is a vast term, and by this GitHub mainly refers to customized code they’ve established using simple HTML, CSS and JavaScript. These components offer portability as well as encapsulation.
