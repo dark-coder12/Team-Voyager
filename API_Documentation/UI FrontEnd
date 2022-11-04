@@ -18,6 +18,11 @@ Web Components
 
 Web Components is a vast term, and by this GitHub mainly refers to customized code they’ve established using simple HTML, CSS and JavaScript. These components offer portability as well as encapsulation.
 
+One of the first two custom elements would be : <relative-time> and <local-time>. Both of these are used to show date and time in a more friendly format, and GitHub can reuse them anytime needed. Such components range from generic purpose such as <remote-input> to <markdown-toolbar>.
+Remote Input: This is used to get values from input fields and send it to a server.
+Markdown Toolbar: This is used to format buttons.
+
+
 A real time example of Task List Elements (A component made by GitHub)
 
 
