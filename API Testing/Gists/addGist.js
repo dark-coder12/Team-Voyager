@@ -52,6 +52,12 @@ Scenario("Testing Creation of a New Gist using Post Request", ({ I }) => {
           },
 
      }).then((value) => {
+          
+           try {
+               assert.equal(value.status, 201);
+          } catch {
+               console.log("Gist Not Created");
+          }
 
           urlOfAddedGist = value.data.url;
 
