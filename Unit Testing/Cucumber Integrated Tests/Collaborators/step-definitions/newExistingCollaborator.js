@@ -3,19 +3,16 @@ const { Given, Then, When } = require('cucumber');
 
 require('dotenv').config(); 
 
-const pageObj = client.page.addCollaborator();
+const pageObj = client.page.newExistingCollaborator();
+
 
 Given('I am Logged In', () => {
     
-    const browser = client.page.login()
-    .navigate()
-    .waitForElementVisible("@login")
-    .setValue("@login", process.env.uName)
-    .setValue("@password", process.env.passcode)
-    .click("@loginBtn")
+    const browser = client.page.login();
+    return browser;
 });
 
-When('I open my existing Organization', () => {
+Given('I open my existing Organization', () => {
 
     return pageObj
       .navigate()
@@ -30,11 +27,18 @@ When('I click on Invite Someone', () => {
       .pause(5000)
 });
 
+
+Then('GitHub displays a pop-up to search the user', () => {
+
+  return pageObj
+    
+   .waitForElementPresent('@inviteKey', 5000)
+});
+
 When('I add the {string} to be invited', (string) => {
 
   return pageObj
-   
-      .waitForElementPresent('@inviteKey', 5000)
+  
       .setValue('@inviteKey', string)
 });
 
@@ -69,6 +73,13 @@ When('I click on Invite Button', () => {
     
 });
 
+
+Then('GitHub confirms the rights of the user', () => {
+
+  return pageObj;
+});
+
+
 When('I choose {string} of the new invitation', (string) => {
 
   return pageObj
@@ -97,3 +108,12 @@ When('I click on Send Invitation', () => {
     else console.log("User not found");
    })  
 });
+
+
+Then('GitHub redirects me to the Result', () => {
+
+  return pageObj
+
+    .pause(2000);
+});
+
