@@ -9,6 +9,8 @@ These features have been mentioned on our Notion Workspace.
 
 https://www.notion.so/x12/Voyager-Home-85b333a7533e43f69bcc512a62e50577
 
+_______________________________________________________________________ APIs GitHub uses ______________________________________________________________________
+
 
 #GitHub’s APIs
 
@@ -366,3 +368,143 @@ try {
 
 A user may choose to perform a request for any feature on GitHub, and for each feature, an API path and required / optional parameters are specified. These can be accessed using the following link.
 https://docs.github.com/en/rest
+
+
+______________________________________________________________ Front End / UI Frameworks GitHub uses ____________________________________________________________
+
+
+#GitHub’s User Interface Design
+
+GitHub does not use heavy frameworks for it’s front-end such as Angular or Vue, instead it makes use of Vanilla HTML, CSS and JavaScript, or personalized Components. 
+
+Background
+
+Upon extensive research, it was found that GitHub originally (2007) made use of simple JavaScript using jQuery for its frontend, but with time it reverted back to the simplicity of vanilla JS. According to GitHub’s official blog: 
+
+“As part of our refined approach to building frontend features on GitHub.com, we focused on getting away with regular HTML foundation as much as we could, and only adding JavaScript behaviors as progressive enhancement. As a result, even those web forms and other UI elements that were enhanced using JS would usually also work with JavaScript disabled in the browser. In some cases, we were able to delete certain legacy behaviors altogether instead of having to rewrite them in vanilla JS.”
+
+https://github.blog/2018-09-06-removing-jquery-from-github-frontend/
+
+GitHub states in their blog that they strive to keep their frontend lightweight, fast and accessible.
+
+Current UI
+
+Web Components 
+
+Web Components is a vast term, and by this GitHub mainly refers to customized code they’ve established using simple HTML, CSS and JavaScript. These components offer portability as well as encapsulation.
+
+A real time example of Task List Elements (A component made by GitHub)
+
+
+A coding example found from GitHub’s repository
+<task-lists> element
+Installation: $ npm install --save @github/task-lists-element
+
+Import: import '@github/task-lists-element'
+
+Markup: 
+<task-lists sortable>
+  <ul class="contains-task-list">
+    <li class="task-list-item">
+      <input type="checkbox" class="task-list-item-checkbox">
+      Hubot
+    </li>
+    <li class="task-list-item">
+      <input type="checkbox" class="task-list-item-checkbox">
+      Bender
+    </li>
+  </ul>
+
+  <ul class="contains-task-list">
+    <li class="task-list-item">
+      <input type="checkbox" class="task-list-item-checkbox">
+      BB-8
+    </li>
+    <li class="task-list-item">
+      <input type="checkbox" class="task-list-item-checkbox">
+      WALL-E
+    </li>
+  </ul>
+</task-lists>
+
+Events:
+const list = document.querySelector('task-lists')
+
+list.addEventListener('task-lists-check', function(event) {
+  const {position, checked} = event.detail
+  console.log(position, checked)
+})
+
+list.addEventListener('task-lists-move', function(event) {
+  const {src, dst} = event.detail
+  console.log(src, dst)
+})
+
+Development:
+npm install
+npm test
+
+Functionality of the frontend features - in JavaScript:
+
+The following source code is for initializing task element actions (i.e. dragging). GitHub has created open source code for utilizing task items functionality, much similar to a to-do list. This list also allows nesting and dragging rows. 
+       
+ By examining the initItem function
+
+First of all, the function checks if the task element is not already initialized, and if not, it initializes it. It also checks whether the current task item to be added is an instance object of the same web component or not, or else it returns from the function. In case a single item exists, since it is not draggable, it returns as well. If all conditions are satisfied mouse movement actions are applied on events like mouse over or mouse out.
+
+// Only top-level lists are draggable, and nested lists drag with their parent item.
+function initItem(el: HTMLElement) {
+  if (initialized.get(el)) return
+  initialized.set(el, true)
+
+  const currentTaskList = el.closest('task-lists')
+  if (!(currentTaskList instanceof TaskListsElement)) return
+
+  // Single item task lists are not draggable.
+  if (currentTaskList.querySelectorAll('.task-list-item').length <= 1) return
+
+  const fragment = handleTemplate.content.cloneNode(true)
+  const handle = (fragment as DocumentFragment).querySelector<HTMLElement>('.handle')
+  el.prepend(fragment)
+
+  if (!handle) throw new Error('handle not found')
+  handle.addEventListener('mouseenter', onHandleMouseOver)
+  handle.addEventListener('mouseleave', onHandleMouseOut)
+
+  sortable(el, onSortStart, onSorted)
+
+  // Drag operations don't remove :hover styles, so manage drag handle hover state.
+  el.addEventListener('mouseenter', onListItemMouseOver)
+  el.addEventListener('mouseleave', onListItemMouseOut)
+}
+
+       A demonstration we tested is also attached as a file.
+
+The complete source code is found here: https://github.com/github/task-lists-element/blob/main/src/task-lists-element.ts
+
+
+Primer CSS
+GitHub has attached Primer’s name to it’s official profile on GitHub itself. Primer plays a huge role in the design components of this website. Primer basically provides CSS components in cooperating an Object Oriented Approach in its code.
+
+Install npm install --save @primer/css
+
+Import: SCSS (Sass) is used to aid CSS styles where needed. Various packages can be imported, depending on what functionality is needed.
+@import "@primer/css/index.scss";
+        @import "@primer/css/core/index.scss";
+@import "@primer/css/product/index.scss";
+@import "@primer/css/marketing/index.scss";
+        
+Core refers to common dependencies, products include any styles only specific to GitHub such as avatars, and marketing is specific to GitHub’s marketing features.
+
+A code reference for Avatars in SCSS. The display is made inline to allow text along with the avatar on the same line. The background color adds an opaque background incase the avatar is transparent. The whole avatar is aligned in the middle, and a little shadow towards bottom right is provided.
+
+.avatar {
+  display: inline-block;
+  overflow: hidden; // Ensure page layout in Firefox should images fail to load
+  line-height: $lh-condensed-ultra;
+  vertical-align: middle;
+  background-color: var(--color-avatar-bg); // adds opaque bg to transparent avatars
+  border-radius: $border-radius;
+  flex-shrink: 0;
+  // stylelint-disable-next-line primer/box-shadow
+  box-shadow: 0 0 0 1px var(--color-avatar-border);
