@@ -1,0 +1,46 @@
+4. Headers
+
+A header is used to pass additional context regarding the request or response, like preferred media formats. GitHub’s documentation states that an Accept header is to be used for most features, with the value: application/vnd.github+json.
+A library known as Octokit is used to facilitate JavaScript API usage. It automatically adds this Accept Header internally and thus, it need not be mentioned. Other headers need to be explicitly stated using the header heading, with key value pairs as in JSON.
+
+await octokit.request("GET /octocat", {
+  headers: {
+    "content-type": "text/plain",
+  },
+});
+This tells the API to expect text content.
+
+
+6. Query Parameters
+
+A query parameter, like path parameters, is specified within the body of the request using key / value pairs. The purpose of such parameters is to control what data is to be returned for a request. Keep in mind, this does not allow you to fetch only certain attributes (as in GraphQL), it just allows for some basic customization. This may be to specify how many items are returned, or in what direction the sorting should be done.
+In JavaScript, using Octokit library, all such parameters are passed in the second argument. The following request is a GET request, used to retrieve the already existing issues in the Spoon-Knife repository.
+
+await octokit.request("GET /repos/{owner}/{repo}/issues", {
+  owner: "octocat",
+  repo: "Spoon-Knife",
+  per_page: 2,
+  sort: "updated",
+  direction: "asc",
+});
+
+
+9. REST API Scenario
+To fetch the issues of a repository named Spoon Knife, and to display the title and author on the terminal the following API call is made. The method “GET” is specified, the path is given to the repository which is kept dynamic. Path, Query and Body Parameters include owner, repository, and how many issues to retrieve. From the vast data returned, the data object retrieved is mapped over to hold the title and authorID of each issue. This is then displayed using console.log. 
+
+A try and catch block is used to resolve errors, and is a good practice.
+
+try {
+  const result = await octokit.request("GET /repos/{owner}/{repo}/issues", {
+    owner: "octocat",
+    repo: "Spoon-Knife",
+    per_page: 2,
+  });
+
+  const titleAndAuthor = result.data.map(issue => {title: issue.title, authorID: issue.user.id})
+
+  console.log(titleAndAuthor)
+
+} catch (error) {
+  console.log(`Error! Status: ${error.status}. Message: ${error.response.data.message}`)
+}
