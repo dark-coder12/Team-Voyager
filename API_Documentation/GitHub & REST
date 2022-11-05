@@ -1,3 +1,16 @@
+
+GitHub and REST
+
+
+1. REST Request
+
+REST API requests are made using an HTTP method and the path of the feature that is required. The base https link remains the same, which is: https://api.github.com
+The specific request that is to be made follows the above URL. As with GraphQL, the examples are documented with 
+•	CLI (Command Line)
+•	cURL
+•	JavaScript
+
+
 4. Headers
 
 A header is used to pass additional context regarding the request or response, like preferred media formats. GitHub’s documentation states that an Accept header is to be used for most features, with the value: application/vnd.github+json.
@@ -9,6 +22,24 @@ await octokit.request("GET /octocat", {
   },
 });
 This tells the API to expect text content.
+
+5. Path and Path Parameters
+
+Once the headers are specified, the request now requires information about the exact pathway to be fetched / modified. 
+The Type of Request
+The request made by the user might be
+•	GET: This request is used to fetch (or get) information
+•	POST: This request is used to add a new object to the feature. i.e. A new repository.
+•	PATCH: This request is used to update an existing object of a feature. i.e. Update an issue.
+•	DELETE: This request is used to delete an existing object of a feature. i.e. Delete a repository.
+
+Such requests need a full pathway to follow, to reach the desired object to get / modify. For example, to access the issues of a repository: 
+/repos/{owner}/{repo}/issues
+Now the parameters which are dynamic (changed per user need) are mentioned in {} curly braces and are called path parameters. These parameters are given concrete values within the JSON Object.
+await octokit.request("GET /repos/{owner}/{repo}/issues", {
+  owner: "octocat",
+  repo: "Spoon-Knife"
+});
 
 
 6. Query Parameters
@@ -23,6 +54,20 @@ await octokit.request("GET /repos/{owner}/{repo}/issues", {
   sort: "updated",
   direction: "asc",
 });
+
+
+7. Body Parameters
+
+Body parameters are specific to the kind of feature which is to be used, and allow a user to pass additional data to the request. On GitHub, for instance, if a user aims to create an issue, attributes that are only specific to an issue, such as a title, and description body, can be specified here.
+The following request is a POST request as it is used to create an issue, with the body parameters being title and body to help create an issue called “Created with the REST API”.
+
+await octokit.request("POST /repos/{owner}/{repo}/issues", {
+  owner: "octocat",
+  repo: "Spoon-Knife",
+  title: "Created with the REST API",
+  body: "This is a test issue created by the REST API",
+});
+
 
 
 9. REST API Scenario
