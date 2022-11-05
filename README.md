@@ -9,7 +9,7 @@ These features have been mentioned on our Notion Workspace.
 
 https://www.notion.so/x12/Voyager-Home-85b333a7533e43f69bcc512a62e50577
 
-_______________________________________________________________________ APIs GitHub uses ______________________________________________________________________
+____________________________ APIs GitHub uses __________________________
 
 
 #GitHub’s APIs
@@ -370,7 +370,7 @@ A user may choose to perform a request for any feature on GitHub, and for each f
 https://docs.github.com/en/rest
 
 
-______________________________________________________________ Front End / UI Frameworks GitHub uses ____________________________________________________________
+________________ Front End / UI Frameworks GitHub uses _________________
 
 
 #GitHub’s User Interface Design
