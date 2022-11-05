@@ -6,17 +6,13 @@ require('dotenv').config();
 const pageObj = client.page.removeCollaborator();
 
 
-Given('I am Logged In', () => {
+Given('I am Logged in', () => {
     
     const browser = client.page.login()
-    .navigate()
-    .setValue("@login", process.env.uName)
-    .setValue("@password", process.env.passcode)
-    .click("@loginBtn")
     return browser;
 });
 
-When('I open my existing Organization', () => {
+When('I open my existing organization', () => {
 
     return pageObj
       .navigate()
@@ -63,7 +59,7 @@ When('I confirm {string}', (string) => {
 });
 
 
-Then('GitHub redirects me to the Result', () => {
+Then('GitHub redirects me to the updated list', () => {
 
     return pageObj
       .pause(5000)
