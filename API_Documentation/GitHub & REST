@@ -11,6 +11,20 @@ The specific request that is to be made follows the above URL. As with GraphQL, 
 •	JavaScript
 
 
+2. Authentication
+
+There are many features which can only be achieved once a user is logged in, and the API will only know this if you get a valid token from your developer settings using generate a personal access token. Scope permissions are also to be specified in the setting to ensure the token covers the needed functionality.
+If the API is to be used from another user’s or organization’s perspective, GitHub App can be utilized.
+
+
+3. Env Variables
+
+One thing that is worth mentioning is that such authentication tokens should never be placed directly within the project and should be hidden in the .env file.
+const octokit = new Octokit({ 
+  auth: process.env.TOKEN,
+});
+
+
 4. Headers
 
 A header is used to pass additional context regarding the request or response, like preferred media formats. GitHub’s documentation states that an Accept header is to be used for most features, with the value: application/vnd.github+json.
@@ -68,9 +82,33 @@ await octokit.request("POST /repos/{owner}/{repo}/issues", {
   body: "This is a test issue created by the REST API",
 });
 
+8. Response Body
+
+Once a request is successfully made, the result is returned as a JSON object, unless the user specifies otherwise. If no data was fetched, the JSON object shall be undefined.
+
+For a repository I own, “search-robots-react”, a response body may resemble the form: 
+{
+  "id": 516045910,
+  "node_id": "R_kgDOHsI8Vg",
+  "name": "search-robots-react",
+  "full_name": "dark-coder12/search-robots-react",
+  "private": false,
+  "owner": {
+    "login": "dark-coder12"
+  }
+  "visibility": "public",
+  "forks": 0,
+  "open_issues": 0,
+  "watchers": 0,
+  "default_branch": "main",
+  "temp_clone_token": null,
+  "network_count": 0,
+  "subscribers_count": 1
+}
 
 
 9. REST API Scenario
+
 To fetch the issues of a repository named Spoon Knife, and to display the title and author on the terminal the following API call is made. The method “GET” is specified, the path is given to the repository which is kept dynamic. Path, Query and Body Parameters include owner, repository, and how many issues to retrieve. From the vast data returned, the data object retrieved is mapped over to hold the title and authorID of each issue. This is then displayed using console.log. 
 
 A try and catch block is used to resolve errors, and is a good practice.
@@ -89,3 +127,10 @@ try {
 } catch (error) {
   console.log(`Error! Status: ${error.status}. Message: ${error.response.data.message}`)
 }
+
+
+10. More Documentation on REST
+
+A user may choose to perform a request for any feature on GitHub, and for each feature, an API path and required / optional parameters are specified. These can be accessed using the following link.
+https://docs.github.com/en/rest
+
