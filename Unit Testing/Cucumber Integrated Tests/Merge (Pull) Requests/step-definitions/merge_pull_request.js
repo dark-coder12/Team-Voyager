@@ -19,7 +19,7 @@ Given ('I am on logged into my existing GitHub account',()=>{
     .pause(1000);
 })
 
-Given ('I navigate to my desired repository', ()=>{
+Given ('I am currently on my desired repository', ()=>{
     return pageObj
         .navigate('https://github.com/shehryarmunir/Testing-Pull-Requests')
         .pause(5000)
@@ -78,8 +78,18 @@ When ('I press confirm merge button', ()=>{
         .pause(5000)
 })
 
+Then ('GitHub merges changes to main branch',()=>{
+    return pageObj
+        .pause(3000);
+})
+
 When ('I press delete branch button',()=>{
     return pageObj
         .click('@deleteBranchButton')
         .pause(5000)
+})
+
+Then ('GitHub deletes current branch',()=>{
+    return pageObj
+        .pause(5000);
 })
