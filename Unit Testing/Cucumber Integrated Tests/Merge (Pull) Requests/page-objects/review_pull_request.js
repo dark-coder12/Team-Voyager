@@ -26,11 +26,12 @@ module.exports = {
         },
 
         pullRequest : {
-            selector : '//*[@id="issue_1_link"]',
+            selector : '//*[@id="issue_9_link"]',
             locateStrategy : 'xpath'
         },
 
         fileChangesTab : {
+            
             selector : '//*[@id="repo-content-turbo-frame"]/div/div[2]/div[2]/nav/a[4]',
             locateStrategy : 'xpath'
         },
@@ -67,6 +68,15 @@ module.exports = {
 
         commentButton : {
             selector: '//*[@id="partial-new-comment-form-actions"]/div/div[2]/button',
+            locateStrategy: 'xpath'
+        },
+
+        profileDropDown: {
+            selector: '/html/body/div[1]/header/div[7]/details/summary/span[2]',
+            locateStrategy: 'xpath'
+        },
+        signOutButton: {
+            selector: '/html/body/div[1]/header/div[7]/details/details-menu/form/button',
             locateStrategy: 'xpath'
         }
 
