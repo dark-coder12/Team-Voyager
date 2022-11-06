@@ -16,7 +16,7 @@ url : 'https://github.com/login',
             },
 
             pullRequest: {
-                selector : '//*[@id="issue_6_link"]',
+                selector : '//*[@id="issue_11_link"]',
                 locateStrategy : 'xpath'
             },
 
