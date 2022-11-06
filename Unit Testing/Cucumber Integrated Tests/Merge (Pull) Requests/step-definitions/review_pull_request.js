@@ -16,7 +16,7 @@ Given ('I am logged into my GitHub account', ()=> {
     .pause(1000);
 })
 
-When ('I navigate to my repository', ()=>{
+When ('I am currently on my repository', ()=>{
     return pageObj
         .navigate('https://github.com/shehryarmunir/Testing-Pull-Requests')
         .pause(5000)
