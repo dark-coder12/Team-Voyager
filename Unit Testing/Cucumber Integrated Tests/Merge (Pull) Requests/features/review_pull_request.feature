@@ -2,7 +2,7 @@ Feature: Reviewing pull request
 
 Scenario Outline: Reviewing pull request
     Given I am logged into my GitHub account
-    When I navigate to my repository
+    When I am currently on my repository
     And I open pull requests tab
     And I open the pull request
     Then GitHub shows me the changes
